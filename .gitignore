@@ -1,0 +1,19 @@
+# Terraform
+**/.terraform/*
+.terraform.lock.hcl
+*.tfstate*
+override.tf*
+*_override.tf*
+crash.log
+crash.*.log
+.terraformrc
+
+# Terragrunt
+.terragrunt-cache
+
+# Development
+.env
+.envrc
+*.log
+.venv
+.DS_Store

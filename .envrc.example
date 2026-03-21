@@ -1,0 +1,13 @@
+# Copy to .envrc and fill in your values.
+# .envrc is gitignored — never commit it.
+
+# Local module dev — uncomment to use local path instead of git source
+# export MODULES_LOCAL_PATH=/Users/yourname/GitHub/terraform-modules
+
+# Yandex Cloud
+export YC_TOKEN=$(yc iam create-token)   # requires yc cli
+export YC_CLOUD_ID=                      # yc resource-manager cloud list
+
+# Terraform state (Yandex Object Storage, S3-compatible)
+export AWS_PROFILE=homelab               # aws cli profile with YC static keys
+export TF_STATE_BUCKET=                  # bucket name
