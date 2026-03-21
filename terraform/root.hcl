@@ -3,6 +3,7 @@ locals {
   environment = "infra"
 
   yc_cloud_id = get_env("YC_CLOUD_ID")
+  dns_servers = split(",", get_env("DNS_SERVERS", "192.168.99.1,8.8.8.8"))
 
   labels = {
     project     = local.project

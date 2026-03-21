@@ -11,3 +11,16 @@ export YC_CLOUD_ID=""                                       # yc resource-manage
 # Terraform state (Yandex Object Storage, S3-compatible)
 export AWS_PROFILE=""                                       # aws cli profile with YC static keys
 export TF_STATE_BUCKET=""                                   # bucket name
+
+# Network
+export DEFAULT_GATEWAY="192.168.99.1"
+export DNS_SERVERS="192.168.99.1,8.8.8.8"                   # comma-separated
+export DNS_DOMAIN="home.lab"
+export VM_USERNAME="ubuntu"
+
+# Proxmox
+export PROXMOX_VE_ENDPOINT=""                               # https://pve-1.home.lab:8006
+export PROXMOX_VE_USERNAME=root@pam                         # bootstrap only
+export PROXMOX_VE_PASSWORD=""                               # bootstrap only, switch to API token after proxmox-auth apply
+export PROXMOX_VE_API_TOKEN=""                              # user@realm!token=<secret>
+export TF_VAR_ssh_public_key=""                             # ssh public key for VM cloud-init
