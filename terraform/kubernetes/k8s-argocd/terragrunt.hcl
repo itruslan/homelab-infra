@@ -19,4 +19,11 @@ inputs = {
       }
     })
   ]
+  app_projects = [
+    { name = "infra", description = "Infrastructure applications" }
+  ]
+  root_app = {
+    repo_url       = "https://github.com/itruslan/homelab-gitops.git"
+    bootstrap_path = "bootstrap"
+  }
 }

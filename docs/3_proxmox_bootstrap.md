@@ -18,3 +18,13 @@ tg output -json proxmox_users | jq -r '.terraform.token_id + "=" + .terraform.to
 ```
 
 Добавить `PROXMOX_VE_API_TOKEN` в `.envrc`, убрать `PROXMOX_VE_USERNAME` и `PROXMOX_VE_PASSWORD`.
+
+## proxmox-vm-k8s-masters / proxmox-vm-k8s-workers
+
+```bash
+cd terraform/proxmox/proxmox-vm-k8s-masters
+tg apply
+
+cd ../proxmox-vm-k8s-workers
+tg apply
+```
