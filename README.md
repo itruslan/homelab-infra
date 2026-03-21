@@ -2,25 +2,19 @@
 
 Homelab infrastructure as code — built step by step from scratch.
 
-## Dependencies
+## Docs
 
-- [mise](https://mise.jdx.dev/) — manages tool versions from `.tool-versions`
-- [direnv](https://direnv.net/) — loads `.envrc` automatically
-
-```bash
-mise install
-cp .envrc.example .envrc  # fill in your values
-direnv allow
-```
+- [1. Init homelab repo](docs/1_init_homelab_repo.md)
+- [2. Yandex Cloud bootstrap](docs/2_yandex_cloud_bootstrap.md)
 
 ## Structure
 
 ```
 terraform/
-├── root.hcl                    # remote state, common locals
+├── root.hcl
 ├── yandex-cloud/
-│   ├── yc-folder/              # homelab folder
-│   └── yc-s3-tf-state/        # S3 bucket for Terraform state
+│   ├── yc-folder/
+│   └── yc-s3-tf-state/
 ├── mikrotik/
 └── proxmox/
 ```
