@@ -14,13 +14,8 @@ remote_state {
   }
 }
 
-locals {
-  modules_local = get_env("MODULES_LOCAL_PATH", "")
-  module_source = length(local.modules_local) > 0 ? "${local.modules_local}//yc-folder" : "git::https://github.com/rgadzhiev/terraform-modules.git//yc-folder?ref=main"
-}
-
 terraform {
-  source = local.module_source
+  source = "git::https://github.com/itruslan/terraform-modules.git//yc-folder?ref=main"
 }
 
 inputs = {
