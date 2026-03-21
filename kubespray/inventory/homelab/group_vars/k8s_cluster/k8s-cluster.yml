@@ -1,0 +1,16 @@
+kube_version: 1.34.3
+cluster_name: homelab
+
+kube_network_plugin: cilium
+cilium_kube_proxy_replacement: true
+
+container_manager: containerd
+
+dns_domain: cluster.local
+
+kube_vip_enabled: true
+kube_vip_controlplane_enabled: true
+kube_vip_address: 192.168.99.205
+loadbalancer_apiserver:
+  address: 192.168.99.205
+  port: 6443
