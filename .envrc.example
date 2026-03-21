@@ -5,9 +5,9 @@
 # export MODULES_LOCAL_PATH=/Users/yourname/GitHub/terraform-modules
 
 # Yandex Cloud
-export YC_TOKEN=$(yc iam create-token)   # requires yc cli
-export YC_CLOUD_ID=                      # yc resource-manager cloud list
+export YC_TOKEN=$(yc iam create-token)                      # requires yc cli
+export YC_CLOUD_ID=""                                       # yc resource-manager cloud list
 
 # Terraform state (Yandex Object Storage, S3-compatible)
-export AWS_PROFILE=homelab               # aws cli profile with YC static keys
-export TF_STATE_BUCKET=                  # bucket name
+export AWS_PROFILE=""                                       # aws cli profile with YC static keys
+export TF_STATE_BUCKET=""                                   # bucket name

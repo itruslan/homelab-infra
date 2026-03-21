@@ -16,6 +16,8 @@ tg apply
 
 ## yc-s3-tf-state
 
+Перед apply заполнить `TF_STATE_BUCKET` в `.envrc` и выполнить `direnv allow`.
+
 ```bash
 cd terraform/yandex-cloud/yc-s3-tf-state
 tg apply
@@ -23,14 +25,27 @@ tg apply
 
 После apply:
 
-1. Скопировать `rw_sa_access_key` / `rw_sa_secret_key` из outputs в AWS CLI профиль `homelab`:
+1. Скопировать `storage_admin_access_key` / `storage_admin_secret_key` из outputs в AWS CLI профиль `homelab-infra`:
 
 ```bash
-aws configure --profile homelab
-# AWS Access Key ID: <rw_sa_access_key>
-# AWS Secret Access Key: <rw_sa_secret_key>
+tg output -raw storage_admin_secret_key
+
+aws configure --profile homelab-infra
+# AWS Access Key ID: <storage_admin_access_key>
+# AWS Secret Access Key: <storage_admin_secret_key>
+# Default region name: us-east-1
 ```
 
-2. Заполнить `TF_STATE_BUCKET` в `.envrc` и выполнить `direnv allow`
+2. Добавить `AWS_PROFILE=homelab-infra` в `.envrc` и выполнить `direnv allow`
+
+3. Мигрировать локальные state в S3:
+
+```bash
+cd terraform/yandex-cloud/yc-folder
+tg init
+
+cd ../yc-s3-tf-state
+tg init -- -migrate-state
+```
 
 С этого момента все модули автоматически используют S3 backend.

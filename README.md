@@ -12,11 +12,9 @@ Homelab infrastructure as code — built step by step from scratch.
 ```
 terraform/
 ├── root.hcl
-├── yandex-cloud/
-│   ├── yc-folder/
-│   └── yc-s3-tf-state/
-├── mikrotik/
-└── proxmox/
+└── yandex-cloud/
+    ├── yc-folder/
+    └── yc-s3-tf-state/
 ```
 
 ## Usage
