@@ -15,7 +15,7 @@ reset:
 		-v ~/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro \
 		-v $(PWD)/$(INVENTORY):/kubespray/inventory/homelab \
 		quay.io/kubespray/kubespray:$(KUBESPRAY_VERSION) \
-		ansible-playbook -i inventory/homelab/hosts.yaml reset.yml
+		ansible-playbook -i inventory/homelab/hosts.yaml reset.yml -e reset_confirmation=yes
 
 ping:
 	docker run --rm -i \

@@ -1,31 +1,20 @@
 # 4. Kubernetes — bootstrap
 
-Установка кластера через kubespray (Docker образ).
+Установка кластера через kubespray. ВМ должны быть созданы заранее.
 
-## Требования
-
-- Docker
-- SSH доступ к нодам
-- ВМ созданы через `proxmox-vm-k8s-masters` и `proxmox-vm-k8s-workers`
-
-## Проверка доступности нод
+| Переменная | Описание |
+|------------|----------|
+| `VM_USERNAME` | Пользователь на нодах |
+| `TF_VAR_ssh_public_key` | SSH публичный ключ для доступа к нодам |
+| `KUBECONFIG` | Путь к kubeconfig после установки |
 
 ```bash
 cd kubespray
-make ping
+make ping     # проверить доступность нод
+make install  # ~30 минут
 ```
 
-## Установка кластера
-
-```bash
-make install
-```
-
-Занимает ~20-30 минут.
-
-## Получить kubeconfig
-
-После установки на `k8s-master-1`:
+Получить kubeconfig:
 
 ```bash
 ssh itruslan@192.168.99.201 "sudo cat /etc/kubernetes/admin.conf" > ~/.kube/homelab.yaml
@@ -33,8 +22,4 @@ export KUBECONFIG=~/.kube/homelab.yaml
 kubectl get nodes
 ```
 
-## Сброс кластера
-
-```bash
-make reset
-```
+Сброс: `make reset`
