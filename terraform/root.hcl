@@ -10,6 +10,13 @@ locals {
   }
 }
 
+terraform {
+  after_hook "unquarantine_providers" {
+    commands = ["init"]
+    execute  = ["sh", "-c", "xattr -dr com.apple.quarantine ~/.terraform.d/plugin-cache 2>/dev/null; xattr -dr com.apple.quarantine .terraform 2>/dev/null; true"]
+  }
+}
+
 remote_state {
   backend = "s3"
   generate = {

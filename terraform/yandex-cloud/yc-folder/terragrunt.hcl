@@ -3,17 +3,6 @@ include "root" {
   expose = true
 }
 
-remote_state {
-  backend = "local"
-  generate = {
-    path      = "backend.tf"
-    if_exists = "overwrite"
-  }
-  config = {
-    path = "${get_terragrunt_dir()}/terraform.tfstate"
-  }
-}
-
 terraform {
   source = "git::https://github.com/itruslan/terraform-modules.git//yc-folder?ref=main"
 }
