@@ -17,16 +17,33 @@ tg apply
 Получить пароль admin:
 
 ```bash
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+tg output -raw initial_admin_password
 ```
 
 UI доступен на `https://argocd.itruslan.ru`.
 
-## bootstrap GitOps
+## GitOps
+
+ArgoCD управляет приложениями из `homelab-gitops`. Root Application создаётся через Terraform и указывает на `bootstrap/` в репо.
+
+Порядок деплоя приложений управляется через `argocd.argoproj.io/sync-wave` аннотации в bootstrap манифестах.
+
+## proxmox-csi
+
+После деплоя proxmox-csi нужно создать секрет с API токеном вручную:
 
 ```bash
-kubectl apply -f /Users/rgadzhiev/GitHub/homelab-gitops/apps/argocd/templates/appproject-infra.yaml
-kubectl apply -f /Users/rgadzhiev/GitHub/homelab-gitops/bootstrap/argocd.yaml
+kubectl -n proxmox-csi-plugin create secret generic proxmox-csi-plugin \
+  --from-literal=token-secret=${PROXMOX_VE_API_TOKEN##*=}
 ```
 
-После этого ArgoCD управляет собой из `homelab-gitops`.
+И проставить topology labels на нодах:
+
+```bash
+kubectl label node k8s-master-1 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-1
+kubectl label node k8s-master-2 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-2
+kubectl label node k8s-master-3 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-3
+kubectl label node k8s-worker-1 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-1
+kubectl label node k8s-worker-2 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-2
+kubectl label node k8s-worker-3 topology.kubernetes.io/region=homelab topology.kubernetes.io/zone=pve-3
+```
