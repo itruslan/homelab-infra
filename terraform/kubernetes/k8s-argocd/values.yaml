@@ -1,16 +1,29 @@
-argo-cd:
-  configs:
-    params:
-      server.insecure: true
+configs:
+  params:
+    server.insecure: true
+  cm:
+    url: "https://argocd.itruslan.ru"
+    oidc.config: |
+      name: Authentik
+      issuer: https://auth.itruslan.ru/application/o/argocd/
+      clientID: argocd
+      clientSecret: $oidc.clientSecret
+      requestedScopes:
+        - openid
+        - profile
+        - email
+      logoutURL: https://auth.itruslan.ru/application/o/argocd/end-session/
+  rbac:
+    policy.default: role:admin
 
-  redis-ha:
-    enabled: false
+redis-ha:
+  enabled: false
 
-  controller:
-    replicas: 1
+controller:
+  replicas: 1
 
-  repoServer:
-    replicas: 1
+repoServer:
+  replicas: 1
 
-  applicationSet:
-    replicas: 1
+applicationSet:
+  replicas: 1

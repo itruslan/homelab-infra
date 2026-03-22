@@ -7,6 +7,19 @@
 | `VAULT_ADDR` | `https://vault.itruslan.ru` |
 | `VAULT_TOKEN` | Root или admin token |
 
+## Vault listener — x_forwarded_for
+
+Vault за load balancer'ом требует доверия к заголовку `X-Forwarded-For`.
+
+В `homelab-gitops/apps/vault/values.yaml` в секции `listener "tcp"` должно быть:
+
+```hcl
+x_forwarded_for_authorized_addrs  = "0.0.0.0/0"
+x_forwarded_for_reject_not_present = false
+```
+
+Без этого logout и redirect URI работают некорректно.
+
 ## vault-oidc-auth
 
 ```bash

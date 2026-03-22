@@ -28,6 +28,16 @@ ArgoCD управляет приложениями из `homelab-gitops`. Root A
 
 Порядок деплоя приложений управляется через `argocd.argoproj.io/sync-wave` аннотации в bootstrap манифестах.
 
+## SSO через Authentik
+
+OIDC настраивается после деплоя Authentik (шаг 6) и применения `authentik-oauth-apps`.
+
+Конфиг в `terraform/kubernetes/k8s-argocd/values.yaml` — секция `configs.cm.oidc.config`.
+
+Client secret читается из `argocd-secret` (ключ `oidc.clientSecret`), куда его кладёт ExternalSecret из `homelab-gitops/apps/argocd/templates/externalsecret.yaml`.
+
+После изменения values — повторный `tg apply` в `k8s-argocd`.
+
 ## proxmox-csi
 
 После деплоя proxmox-csi нужно создать секрет с API токеном вручную:

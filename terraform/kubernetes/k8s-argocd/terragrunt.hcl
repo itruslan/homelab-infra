@@ -14,9 +14,7 @@ inputs = {
   values = [
     file("values.yaml"),
     yamlencode({
-      "argo-cd" = {
-        global = { domain = "argocd.${include.root.locals.domain}" }
-      }
+      global = { domain = "argocd.${include.root.locals.domain}" }
     })
   ]
   app_projects = [
