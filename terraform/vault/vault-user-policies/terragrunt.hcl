@@ -12,8 +12,7 @@ dependency "vault_oidc_auth" {
 }
 
 terraform {
-  # source = "git::https://github.com/itruslan/terraform-modules.git//vault-user-policies?ref=main"
-  source = "/Users/rgadzhiev/GitHub/terraform-modules/vault-user-policies"
+  source = "git::https://github.com/itruslan/terraform-modules.git//vault-user-policies?ref=main"
 }
 
 inputs = {
