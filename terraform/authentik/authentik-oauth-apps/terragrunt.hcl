@@ -29,5 +29,12 @@ inputs = {
       ]
       vault_secret_path = "authentik/apps/vault"
     }
+    grafana = {
+      name = "Grafana"
+      allowed_redirect_uris = [
+        "https://grafana.${include.root.locals.domain}/login/generic_oauth"
+      ]
+      vault_secret_path = "authentik/apps/grafana"
+    }
   }
 }
