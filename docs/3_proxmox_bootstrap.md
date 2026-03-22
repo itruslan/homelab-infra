@@ -9,10 +9,10 @@
 | `PROXMOX_VE_PASSWORD` | Пароль root |
 | `PROXMOX_VE_API_TOKEN` | Токен после bootstrap (`terraform@pve!terraform=<token>`) |
 
-## proxmox-auth
+## proxmox-svc
 
 ```bash
-cd terraform/proxmox/proxmox-auth
+cd terraform/proxmox/proxmox-svc
 tg apply
 tg output -json proxmox_users | jq -r '.terraform.token_id + "=" + .terraform.token'
 ```
@@ -26,5 +26,17 @@ cd terraform/proxmox/proxmox-vm-k8s-masters
 tg apply
 
 cd ../proxmox-vm-k8s-workers
+tg apply
+```
+
+## proxmox-oidc-auth / proxmox-users
+
+> Применять после `authentik-oauth-apps` (docs/6).
+
+```bash
+cd terraform/proxmox/proxmox-oidc-auth
+tg apply
+
+cd ../proxmox-users
 tg apply
 ```

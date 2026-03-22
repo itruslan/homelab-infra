@@ -21,6 +21,6 @@ export VM_USERNAME="ubuntu"
 # Proxmox
 export PROXMOX_VE_ENDPOINT=""                               # https://pve-1.home.lab:8006
 export PROXMOX_VE_USERNAME=root@pam                         # bootstrap only
-export PROXMOX_VE_PASSWORD=""                               # bootstrap only, switch to API token after proxmox-auth apply
+export PROXMOX_VE_PASSWORD=""                               # bootstrap only, switch to API token after proxmox-svc apply
 export PROXMOX_VE_API_TOKEN=""                              # user@realm!token=<secret>
 export TF_VAR_ssh_public_key=""                             # ssh public key for VM cloud-init

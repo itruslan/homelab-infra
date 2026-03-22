@@ -9,7 +9,7 @@ include "proxmox" {
 }
 
 terraform {
-  source = "git::https://github.com/itruslan/terraform-modules.git//proxmox-auth?ref=main"
+  source = "git::https://github.com/itruslan/terraform-modules.git//proxmox-svc?ref=main"
 }
 
 inputs = {
@@ -21,6 +21,7 @@ inputs = {
       privileges = [
         "Datastore.AllocateSpace", "Datastore.AllocateTemplate", "Datastore.Audit",
         "Pool.Allocate", "Sys.Audit", "Sys.Console", "Sys.Modify",
+        "Group.Allocate", "Permissions.Modify", "Realm.Allocate", "Realm.AllocateUser", "User.Modify",
         "VM.Allocate", "VM.Audit", "VM.Clone", "VM.Config.CDROM",
         "VM.Config.Cloudinit", "VM.Config.CPU", "VM.Config.Disk",
         "VM.Config.HWType", "VM.Config.Memory", "VM.Config.Network",

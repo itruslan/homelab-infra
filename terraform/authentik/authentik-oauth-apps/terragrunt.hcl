@@ -36,5 +36,27 @@ inputs = {
       ]
       vault_secret_path = "authentik/apps/grafana"
     }
+    proxmox = {
+      name = "Proxmox"
+      allowed_redirect_uris = [
+        "https://pve.${include.root.locals.domain}",
+        "https://pve.${include.root.locals.domain}/",
+        "https://pve.${include.root.locals.domain}:8006",
+        "https://pve.${include.root.locals.domain}:8006/",
+        "https://pve-1.${include.root.locals.domain}",
+        "https://pve-1.${include.root.locals.domain}/",
+        "https://pve-1.${include.root.locals.domain}:8006",
+        "https://pve-1.${include.root.locals.domain}:8006/",
+        "https://pve-2.${include.root.locals.domain}",
+        "https://pve-2.${include.root.locals.domain}/",
+        "https://pve-2.${include.root.locals.domain}:8006",
+        "https://pve-2.${include.root.locals.domain}:8006/",
+        "https://pve-3.${include.root.locals.domain}",
+        "https://pve-3.${include.root.locals.domain}/",
+        "https://pve-3.${include.root.locals.domain}:8006",
+        "https://pve-3.${include.root.locals.domain}:8006/",
+      ]
+      vault_secret_path = "authentik/apps/proxmox"
+    }
   }
 }

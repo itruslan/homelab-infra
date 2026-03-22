@@ -18,7 +18,13 @@ inputs = {
     })
   ]
   app_projects = [
-    { name = "infra", description = "Infrastructure applications" }
+    {
+      name        = "infra"
+      description = "Infrastructure applications"
+      extra_destinations = [
+        { name = "hshp-vps", namespace = "*" }
+      ]
+    }
   ]
   root_app = {
     repo_url       = "https://github.com/itruslan/homelab-gitops.git"

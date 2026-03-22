@@ -20,8 +20,7 @@ dependency "authentik_oauth_apps" {
 }
 
 terraform {
-  # source = "git::https://github.com/itruslan/terraform-modules.git//vault-oidc-auth?ref=main"
-  source = "/Users/rgadzhiev/GitHub/terraform-modules/vault-oidc-auth"
+  source = "git::https://github.com/itruslan/terraform-modules.git//vault-oidc-auth?ref=main"
 }
 
 locals {
