@@ -8,7 +8,7 @@ terraform {
 }
 
 inputs = {
-  kubeconfig_path    = "~/.kube/homelab.yaml"
+  kubeconfig_path    = "~/.kube/config"
   kubeconfig_context = "kubernetes-admin@homelab"
   chart_version      = "9.4.14"
   values = [
@@ -17,17 +17,10 @@ inputs = {
       global = { domain = "argocd.${include.root.locals.domain}" }
     })
   ]
-  app_projects = [
-    {
-      name        = "infra"
-      description = "Infrastructure applications"
-      extra_destinations = [
-        { name = "hshp-vps", namespace = "*" }
-      ]
-    }
-  ]
+  app_projects = []
   root_app = {
-    repo_url       = "https://github.com/itruslan/homelab-gitops.git"
-    bootstrap_path = "bootstrap"
+    repo_url          = "https://github.com/itruslan/homelab-gitops.git"
+    bootstrap_path    = "bootstrap/argocd"
+    directory_recurse = true
   }
 }
