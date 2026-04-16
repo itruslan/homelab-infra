@@ -6,6 +6,27 @@ locals {
   dns_servers = split(",", get_env("DNS_SERVERS"))
   domain      = get_env("DNS_DOMAIN")
 
+  yc_vpc_id = "enprj3obbitl7a1n4t51"
+
+  yc_subnets = [
+    {
+      zone = "ru-central1-a"
+      id   = "e9bha8daq4e8nv9r8n80"
+    },
+    {
+      zone = "ru-central1-b"
+      id   = "e2l1d1h8iltqasvvci29"
+    },
+    {
+      zone = "ru-central1-d"
+      id   = "fl8hdt3f71jn766dvu6t"
+    },
+    {
+      zone = "ru-central1-e"
+      id   = "ajc7qpt0a5glssr5ai2g"
+    },
+  ]
+
   labels = {
     project     = local.project
     environment = local.environment

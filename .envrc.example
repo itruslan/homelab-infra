@@ -17,10 +17,10 @@ export DEFAULT_GATEWAY="192.168.99.1"
 export DNS_SERVERS="192.168.99.1,8.8.8.8"                   # comma-separated
 export DNS_DOMAIN="home.lab"
 export VM_USERNAME="ubuntu"
+export YC_ADMIN_ALLOWED_CIDRS="128.0.142.231/32,191.96.94.9/32"  # trusted admin CIDRs for SSH and Kubernetes API
 
 # Proxmox
 export PROXMOX_VE_ENDPOINT=""                               # https://pve-1.home.lab:8006
 export PROXMOX_VE_USERNAME=root@pam                         # bootstrap only
 export PROXMOX_VE_PASSWORD=""                               # bootstrap only, switch to API token after proxmox-svc apply
 export PROXMOX_VE_API_TOKEN=""                              # user@realm!token=<secret>
-export TF_VAR_ssh_public_key=""                             # ssh public key for VM cloud-init
