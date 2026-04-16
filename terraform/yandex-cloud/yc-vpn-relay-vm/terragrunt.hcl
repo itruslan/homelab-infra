@@ -80,6 +80,6 @@ package_update: true
 packages:
   - curl
 runcmd:
-  - curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --tls-san yc-vps.itruslan.ru" sh -
+  - curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --tls-san yc-vps.itruslan.ru --disable traefik --disable servicelb" sh -
 EOT
 }
