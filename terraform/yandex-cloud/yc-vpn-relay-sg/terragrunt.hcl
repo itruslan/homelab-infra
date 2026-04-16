@@ -19,6 +19,8 @@ dependency "yc_folder" {
 
 locals {
   admin_allowed_cidrs = compact(split(",", get_env("YC_ADMIN_ALLOWED_CIDRS", "128.0.142.231/32,191.96.94.9/32")))
+  # Xray VLESS Reality: hostPort 443 на ноде; при необходимости сузить: YC_VLESS_INGRESS_CIDRS=203.0.113.0/24
+  vless_ingress_cidrs = compact(split(",", get_env("YC_VLESS_INGRESS_CIDRS", "0.0.0.0/0")))
 }
 
 inputs = {
@@ -37,6 +39,12 @@ inputs = {
       from_port      = 0
       to_port        = 65535
       v4_cidr_blocks = local.admin_allowed_cidrs
+    }
+    vless_https = {
+      protocol       = "TCP"
+      description  = "Xray VLESS Reality (hostPort 443 -> container 8443)"
+      port           = 443
+      v4_cidr_blocks = local.vless_ingress_cidrs
     }
   }
 
