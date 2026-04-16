@@ -18,6 +18,7 @@ export DNS_SERVERS="192.168.99.1,8.8.8.8"                   # comma-separated
 export DNS_DOMAIN="home.lab"
 export VM_USERNAME="ubuntu"
 export YC_ADMIN_ALLOWED_CIDRS="128.0.142.231/32,191.96.94.9/32"  # trusted admin CIDRs for SSH and Kubernetes API
+# export YC_VLESS_INGRESS_CIDRS="0.0.0.0/0"                    # optional; SG rule for Xray on TCP 443 (default in terragrunt is 0.0.0.0/0)
 
 # Proxmox
 export PROXMOX_VE_ENDPOINT=""                               # https://pve-1.home.lab:8006
