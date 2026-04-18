@@ -31,6 +31,8 @@ locals {
     project     = local.project
     environment = local.environment
   }
+
+  vault_address = "https://vault.${local.domain}"
 }
 
 terraform {
