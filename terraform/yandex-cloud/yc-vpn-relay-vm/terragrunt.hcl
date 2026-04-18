@@ -40,8 +40,7 @@ locals {
 inputs = {
   folder_id = dependency.yc_folder.outputs.folder_id
 
-  name        = "homelab-vpn-relay"
-  description = "VLESS Reality relay entry VM (VLESS->FreakHosting split routing)"
+  name        = "homelab-helper"
   labels      = include.root.locals.labels
 
   # Plan requires a new zone (E). Yandex VM module expects explicit zone id.

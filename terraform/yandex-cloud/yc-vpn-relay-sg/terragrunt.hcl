@@ -42,7 +42,7 @@ inputs = {
     }
     vless_https = {
       protocol       = "TCP"
-      description    = "Xray VLESS Reality (hostPort 443 -> pod 8443)"
+      description    = "Helper port"
       port           = 443
       v4_cidr_blocks = local.vless_ingress_cidrs
     }
