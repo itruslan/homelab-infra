@@ -1,0 +1,6 @@
+groups:
+  rundeck-admins:
+    users:
+      - itruslan
+  rundeck-users:
+    users: []

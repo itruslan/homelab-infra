@@ -17,7 +17,8 @@ inputs = {
     argocd = {
       name = "ArgoCD"
       allowed_redirect_uris = [
-        "https://argocd.${include.root.locals.domain}/auth/callback"
+        "https://argocd.${include.root.locals.domain}/auth/callback",
+        "http://localhost:8085/auth/callback"
       ]
       vault_secret_path = "authentik/apps/argocd"
     }
