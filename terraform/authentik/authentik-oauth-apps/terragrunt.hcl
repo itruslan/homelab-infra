@@ -15,7 +15,8 @@ inputs = {
 
   apps = {
     argocd = {
-      name = "ArgoCD"
+      name        = "ArgoCD"
+      client_type = "public"
       allowed_redirect_uris = [
         "https://argocd.${include.root.locals.domain}/auth/callback",
         "http://localhost:8085/auth/callback"
@@ -64,7 +65,8 @@ inputs = {
       allowed_redirect_uris = [
         "https://rundeck.${include.root.locals.domain}/oauth2/callback"
       ]
-      vault_secret_path = "authentik/apps/rundeck"
+      vault_secret_path      = "authentik/apps/rundeck"
+      generate_cookie_secret = true
     }
   }
 }
