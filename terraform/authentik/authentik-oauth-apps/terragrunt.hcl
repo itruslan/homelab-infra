@@ -61,7 +61,8 @@ inputs = {
       vault_secret_path = "authentik/apps/proxmox"
     }
     rundeck = {
-      name = "Rundeck"
+      name        = "Rundeck"
+      client_type = "public"
       allowed_redirect_uris = [
         "https://rundeck.${include.root.locals.domain}/oauth2/callback"
       ]
